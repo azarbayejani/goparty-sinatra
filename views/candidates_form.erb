@@ -1,0 +1,42 @@
+<div class="hero-unit">
+  <h1>New Candidate</h1>
+  <hr/>
+  <form method="POST" action="/candidates" class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="name">Candidate Name</label>
+      <div class="controls">
+        <input type="text" placeholder="name" name="name" required >
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="title">Candidate Title</label>
+      <div class="controls">
+        <input type="text" placeholder="title" name="title" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+        <textarea name="description" rows="3">
+        </textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="video">Youtube Video</label>
+      <div class="controls">
+        <input type="text" placeholder="video url" name="video" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="type">Candidate Type</label>
+      <div class="controls">
+        <select id="" name="type">
+          <option value="executive">Executive</option>
+          <option value="residential">Residential Representative</option>
+          <option value="academic">Academic Representative</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

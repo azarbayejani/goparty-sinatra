@@ -1,0 +1,85 @@
+<div class="tabbable">
+  <ul class="nav nav-tabs" id="sub-tabs">
+    <li class="active">
+      <a href="#exec" data-toggle="tab" id="execbutton"><p>Go to
+         <strong>Executives</strong></p>
+      </a>
+    </li>
+    <li>
+      <a href="#res" data-toggle="tab">
+        <p>Go to <strong>Residential Representatives</strong></p>
+      </a>
+    </li>
+    <li>
+      <a href="#acad" data-toggle="tab"><p>
+                   Go to <strong>Academic Representatives</strong></p></a>
+    </li>
+  </ul>
+
+<div class="tab-content">
+  <div id="exec" class="hero-unit tab-pane active">
+    <ul class="thumbnails">
+<% @exec.each do |candidate| %>
+      <li class="span3">
+        <a href="#" class="thumbnail">
+          <img src="" alt="" />
+          <h3><%= candidate.name %></h3>
+          <h4> <%= candidate.title %> </h4>
+          <p hidden>
+            <%= candidate.description %>
+          </p>
+          <b hidden data-link="<%= candidate.video %>"></b>
+        </a>
+      </li>
+<% end %>
+      <li class="span6" style="display:none">
+        <h1>Name of Person</h1>
+        <iframe class="video" width="400" height"233" allowfullscreen frameborder="1" src=""></iframe>
+        <p>TESTESTST</p>
+      </li>
+    </ul>
+  </div>
+  <div id="res" class="hero-unit tab-pane">
+    <ul class="thumbnails">
+      <% @residential.each do |candidate| %>
+      <li class="span3">
+        <div class="thumbnail">
+          <a href="#" class="thumbnail">
+            <img src="" alt="" />
+            <h3>candidate.name</h3>
+            <h4>candidate.title</h4>
+            <p hidden>candidate.description</p>
+            <b hidden data-link="<%= candidate.video %>"></b>
+          </a>
+        </div>
+      </li>
+      <% end %>
+      <li class="span6" style="display:none">
+        <h1>Name of Person</h1>
+        <iframe class="video" width="400" height"233" allowfullscreen frameborder="1" src=""></iframe>
+        <p>TESTESTST</p>
+      </li>
+    </ul>
+  </div>
+  <div id="acad" class="hero-unit tab-pane">
+    <ul class="thumbnails">
+      <% @academic.each do |candidate| %>
+      <li class="span3">
+        <div class="thumbnail">
+          <a href="#" class="thumbnail">
+            <img src="" alt="" />
+            <h3><%= candidate.name %></h3>
+            <h4> <%= candidate.title %></h4>
+            <p hidden><%= candidate.description %></p>
+            <b hidden data-link="<%= candidate.video %>"></b>
+          </a>
+        </div>
+      </li>
+      <% end %>
+      <li class="span6" style="display:none">
+        <h1>Name of Person</h1>
+        <iframe class="video" width="400" height"233" allowfullscreen frameborder="1" src=""></iframe>
+        <p>TESTESTST</p>
+      </li>
+    </ul>
+</div>
