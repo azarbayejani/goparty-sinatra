@@ -34,16 +34,29 @@ class Section
 
   property :id, Serial
   property :title, String, :required => true
-  property :text, Text, :required => true
+  property :text, Text
+  property :slug, String
+
+  has n, :problem
 
   belongs_to :platform
+end
+
+class Problem
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :text, String, :required => true
+  property :solution, String, :required => true
+
+  belongs_to :section
 end
 
 DataMapper.auto_upgrade!
 
 helpers do
   def printActiveIfMatches s
-    if s == request.path_info
+    if s.index request.path_info
       'class="active"'
     end
   end
