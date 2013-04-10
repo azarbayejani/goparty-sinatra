@@ -1,0 +1,42 @@
+<div class="tabbable">
+  <ul id="sub-tabs" class="nav nav-tabs ">
+    <% @platforms.each do |page| %>
+      <li <% if page.slug == "Go" %>class="active" <% end %>>
+        <a href="#<%= page.slug %>" data-toggle="tab"><p><%= page.title %></p></a>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="tab-content">
+    <% @platforms.each do |page| %>
+      <% if page.slug == "Go" %>
+        <div id="<%= page.slug %>" class="hero-unit tab-pane active">
+          <h1></h1>
+          <p></p>
+          <p style="padding-top:40px;">
+          </p>
+          <div class="well" style="padding-left:55px;">
+
+          </div>
+        </div>
+      <% else %>
+        <div id="<%= page.slug %>" class="hero-unit tab-pane">
+          <h1><%= page.title %></h1>
+          <hr class="long" />
+          <% page.sections.each do |section| %>
+            <div class="well">
+              <div class="row">
+                <a data-toggle="collapse" href="#<%= section.slug %>" class="nodec">
+                  <h2 class="pull-right"><%= section.title %></h2>
+                </a>
+              </div>
+              <div class="collapse" id="<%=section.slug%>">
+                <%= section.text %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
