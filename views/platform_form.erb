@@ -1,0 +1,79 @@
+<div class="hero-unit">
+  <h1>New Platform Sub-Page</h1>
+  <hr/>
+<!--
+    <div class="control-group">
+      <label class="control-label" for="platform_section_title">Section Title (required)</label>
+      <div class="controls">
+        <input type="text" placeholder="Section Title (e.g. Academic Reform)" name="platform_section_title" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="section_description_text">Section Description (optional)</label>
+      <div class="controls">
+        -->
+  <form id="huge_form" method="POST" action="/platform">
+    <label for="page_title"><h3>Page Title</h3></label>
+    <input type="text" id="page_title" name="page[title]" placeholder="(e.g. Academic Reform)" class="span7">
+    <label for="page_text"><h3>Top-level page text</h3></label>
+    <textarea id="editor" name="page[text]" contenteditable="true" placeholder="Enter text ..." class="span7" rows="6" id="page_text">
+    </textarea>
+    <div>
+      <input type="submit">
+    </div>
+  </form>
+  <div class="form-inline" hidden>
+    <button id="remove_button"><i class="icon-minus"></i></button>
+    <label for="remove_button">Remove last sub-section</label>
+  </div>
+
+  <div class="form-inline">
+    <button id="add_button"><i class="icon-plus"></i></button>
+    <label for="add_button">Add a sub-section</label>
+  </div>
+<!--      </div>
+    </div> -->
+</div>
+
+<script>
+  $(function(){
+    var curr_child = 1;
+    $("#add_button").click(function(){
+      if(curr_child == 1){
+        $("#remove_button").parent().show();
+      }
+      
+      var div_id = "subsection_" + curr_child;
+      var title_id = "subsection_title_" + curr_child;
+      var title_name = "subsection[" + curr_child + "][title]";
+      var text_id = "subsection_text_" + curr_child;
+      var text_name = "subsection[" + curr_child + "][text]";
+      var label_slug = "Sub-section # " + curr_child;
+
+      $("#huge_form").append(
+        "<div id='" + div_id + "' class='sub-section'>" +
+          "<label for='" + title_id + "'><strong>" + label_slug + " Title</strong></label>" +
+          "<input type='text' name='" + title_name + "' id='" + title_id + "' class='span7'>" +
+          "<label for='" + text_id + "'><strong>" + label_slug + " Text</strong></label>" +  
+          "<textarea id='" + text_id + "' name='" + text_name + "' class='span7' rows='5'></textarea>" +
+        "</div>"
+      );
+      $('html, body').animate({scrollTop: $("#"+div_id).offset().top});
+      curr_child++;
+      $("#"+text_id).wysihtml5();
+    });
+    $("#remove_button").click(function(){
+      var sub = $("#huge_form .sub-section").filter(":last");
+      //TODO: add warning for destructive changes
+      //if( sub.children("textarea")[0].val() !== "" ){
+        sub.remove();
+      //}else{
+
+      //}
+      curr_child--;
+      if(curr_child == 1){
+        $(this).parent().hide();
+      }
+    });
+  });
+</script>
