@@ -55,11 +55,17 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="./ico/apple-touch-icon-57-precomposed.png">
+    <script src="/js/jquery-1.9.1.js"></script>
+    <!-- <script src="/js/bootstrap.min.js"></script> -->
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/wysihtml5-0.3.0.js"></script>
+    <script src="/js/bootstrap-wysihtml5.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
   </head>
 
   <body>
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -71,11 +77,11 @@
 style="max-height:40px;" /></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li <%= printActiveIfMatches "/home" %>><a href="#"><p>GO</p>Home</a></li>
-              <li <%= printActiveIfMatches "/candidates" %>><a href="candidates.html"><p>GO</p>Candidates</a></li>
-              <li <%= printActiveIfMatches "/platform" %>><a href="platform.html"><p>GO</p>Platform</a></li>
-              <li <%= printActiveIfMatches "/vote" %>><a href="vote.html"><p>GO</p>Vote</a></li>
-              <li <%= printActiveIfMatches "/sugg" %>><a href="sugg.html"><p>GO</p>Suggestions</a></li>
+              <li <%= printActiveIfMatches "/" %>><a href="/"><p>GO</p>Home</a></li>
+              <li <%= printActiveIfMatches "/candidates" %>><a href="/candidates"><p>GO</p>Candidates</a></li>
+              <li <%= printActiveIfMatches "/platform" %>><a href="/platform"><p>GO</p>Platform</a></li>
+              <li <%= printActiveIfMatches "/vote" %>><a href="/vote"><p>GO</p>Vote</a></li>
+              <li <%= printActiveIfMatches "/suggestion" %>><a href="/suggestion"><p>GO</p>Suggestions</a></li>
               <!-- <li><a href="#endorsements"><p>GO</p>Endorsements</a></li> -->
             </ul>
           </div><!--/.nav-collapse -->
@@ -90,43 +96,45 @@ style="max-height:40px;" /></a>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    
     <script>
-      var $carousel = $("#myCarousel").carousel({ interval: 4000 });
-      $carousel.on('slid',function(){ 
-        if( $('#myCarousel .active').index('#myCarousel .item') == 2 ){
-          $carousel.carousel('pause');
-          $('#myModal').modal(); 
-        } 
-      });
-      $('.return').click(
-        function(){
-          $('.tab-content .active').children().slideDown('slow');
-          $('.profile').fadeOut();
-      });
-      $('.thumbnail').click(
-        function(){
-          var $vid = $(this).children('b').attr('data-link');
-          var $desc = $(this).children('p');
-          var $name = $(this).children('h3');
-          var $sibs = $(this).parent().siblings();
-          $(this).toggleClass('chosen');
-          $sibs.fadeToggle('fast',
-            function(){
-              $(this).children('p').html($desc.html());
-              $(this).children('h1').html($name.html());
-              $(this).children('.video').attr('src',$vid);
-            }
-          );
-       });
-       $('a[data-toggle="tab"]').click(function(){
-        $('.chosen').parent().siblings().fadeToggle();
-        $(".chosen").removeClass('chosen');
-       });
-       $('.thumbnail').click(function(){
+      $(function(){
+        var $carousel = $("#myCarousel").carousel({ interval: 4000 });
+        $carousel.on('slid',function(){ 
+          if( $('#myCarousel .active').index('#myCarousel .item') == 2 ){
+            $carousel.carousel('pause');
+            $('#myModal').modal(); 
+          } 
+        });
+        $('.return').click(
+          function(){
+            $('.tab-content .active').children().slideDown('slow');
+            $('.profile').fadeOut();
+        });
+        $('.thumbnail').click(
+          function(){
+            var $vid = $(this).children('b').attr('data-link');
+            var $desc = $(this).children('p');
+            var $name = $(this).children('h3');
+            var $sibs = $(this).parent().siblings();
+            $(this).toggleClass('chosen');
+            $sibs.fadeToggle('fast',
+              function(){
+                $(this).children('p').html($desc.html());
+                $(this).children('h1').html($name.html());
+                $(this).children('.video').attr('src',$vid);
+              }
+            );
+         });
+         $('a[data-toggle="tab"]').click(function(){
+          $('.chosen').parent().siblings().fadeToggle();
+          $(".chosen").removeClass('chosen');
+         });
+         $('.thumbnail').click(function(){
 
-       });
+         });
+         $('#editor').wysihtml5({ "color" : true });
+      });
 
       //});
     </script>
