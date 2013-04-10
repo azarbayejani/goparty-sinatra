@@ -13,7 +13,7 @@ class Candidate
   property :name, String, :required => true
   property :description, Text
   property :title, String 
-  property :video, String, :required => true
+  property :video, String
   property :img, String
   property :type, String
 end
@@ -22,6 +22,9 @@ class Platform
   include DataMapper::Resource
 
   property :id, Serial
+  property :title, String
+  property :text, Text
+  property :slug, String
 
   has n, :sections
 end
@@ -75,7 +78,30 @@ get '/candidates/create' do
   erb :candidates_form
 end
 
-get '/platform/' do
-  @platform = Platform.all, :id.desc
+get '/platform' do
+  @platforms = Platform.all
   erb :platform
+end
+
+get '/platform/create' do
+  erb :platform_form
+end
+
+post '/platform' do
+  p = Platform.new
+  p[:title] = params[:page][:title]
+  p[:slug] = params[:page][:title].gsub(/\W/,"").gsub(/\s+/,"-")
+  p[:text] = params[:page][:text]
+  if( params[:subsection] && params[:subsection].length > 0 )
+    params[:subsection].each_with_index do |sub,i|
+      s = Section.new
+      s[:title] = sub[1][:title]
+      s[:slug] = sub[1][:title].gsub(/\s+/,"-")
+      s[:text] = sub[1][:text]
+      s.save 
+      p.sections << s
+    end
+  end
+  p.save
+  redirect '/platform' 
 end
