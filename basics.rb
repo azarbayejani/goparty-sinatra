@@ -159,6 +159,17 @@ post '/platform' do
   redirect '/platform' 
 end
 
+get '/platform/admin' do
+  
+  @platforms = Platform.all
+  erb :platform_admin
+
+end
+
+delete '/platform/:id' do
+  Platform.get(params[:id].to_i).destroy
+end
+
 get '/email/create' do
   erb :email_form
 end

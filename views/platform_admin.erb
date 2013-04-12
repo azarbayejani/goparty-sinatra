@@ -1,0 +1,45 @@
+<div class="container non-home">
+  <h1>Platform Admin Panel</h1>
+  <table class="table">
+    <tr>
+      <th>Page title</th>
+      <th># of sections</th>
+      <th>Delete</th>
+    </tr>
+  <% @platforms.each do |platform| %>
+    <tr id="<%= platform.id %>">
+      <td><%= platform.title %></td>
+      <td><%= platform.sections.length %></td>
+      <td><button data-delete="<%= platform.id %>" 
+          class="delete-btn btn btn-danger">DELETE</button></td>
+    </tr>
+  <% end %>
+</div>
+
+<script>
+  $(".delete-btn").click(function(){
+    id_to_delete = $(this).attr('data-delete');
+    el_to_remove = $("#" + id_to_delete);
+    el_to_remove.slideUp();
+    $.ajax(
+      {
+        url: "/platform/" + id_to_delete,
+        type: 'DELETE',
+        success: function(){
+          // good
+        },
+        error: function(){
+          el_to_remove.children().last().slideDown().append(
+            '<span class="label label-warning">' +
+            'Not deleted!</span>'
+          );
+        }
+
+      }
+
+    );
+
+
+  });
+
+</script>
