@@ -8,16 +8,22 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <!-- <link href="/css/bootstrap.css" rel="stylesheet"> -->
+        <!--<link href="/css/bootstrap.css" rel="stylesheet"> -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <style type="text/css">
       body {
-        padding-top: 60px;
         padding-bottom: 40px;
+        color: #5a5a5a;
+      }
+      .non-home{
+        margin-top:80px;
       }
       .brand {
         margin-bottom:0px;
         padding-left:3% !important;
+      }
+      .brand img{
+        max-height:40px;
       }
       .nav li a p{
         margin-bottom:0px;
@@ -25,6 +31,7 @@
       .item img{
         height:100%; width:100%;
         margin-left:auto; margin-right:auto;
+        z-index:-20;
       }
       .nav .active{
         color:rgb(49,158,55);        
@@ -32,18 +39,94 @@
       .item{
       }
       .carousel-caption{
-        color:white;
-        margin-bottom:24%;
-        padding:3%;
       }
+      
       #third{
         color:white;
         margin-bottom:7%;
         padding:1%;
       }
+      .navbar-wrapper {
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        margin-top: 20px;
+        margin-bottom: -90px;
+      }
+
+      .navbar .navbar-inner {
+          border: 0;
+          -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+             -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+                  box-shadow: 0 2px 10px rgba(0,0,0,.25);
+      }
+
+/* Downsize the brand/project name a bit */
+        .navbar .brand {
+          padding: 14px 20px 16px; /* Increase vertical padding to match navbar     links */
+          font-size: 16px;
+          font-weight: bold;
+          text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+        }
+
+        /* Navbar links: increase padding for taller navbar */
+        .navbar .nav > li > a {
+          padding: 15px 20px;
+        }
+
+        /* Offset the responsive button for proper vertical alignment */
+        .navbar .btn-navbar {
+          margin-top: 10px;
+        }
+
+        .carousel-caption {
+          max-width:39%;
+          border-top-right-radius: 12px 12px;
+          border-bottom-right-radius: 12px 12px;
+          color:white;
+          padding:3%;
+          margin-left:2%;
+          margin-bottom:25%;
+          margin-top:28%;
+          height:60%;
+          background:transparent;
+        }
+
+        .carousel-caption form{
+          position:absolute;
+          z-index:0;
+        }
+
+        .carousel-caption h3{
+          margin-top:14%;
+          z-index:10020;
+        }
+
+
+
+        .carousel-caption form .row{
+          margin-left:0%;
+          margin-bottom:-2%;
+          z-index:0;
+        }
+
+        .carousel-caption>:first-child{
+          margin-top:60%;
+        }
+
+        .carousel {
+          position:absolute;
+          top:0;
+          left:0;
+          z-index:-100;
+          width:100%;
+        }
+
+
     </style>
     <!-- <link href="/css/bootstrap-responsive.css" rel="stylesheet"> -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="/css/bootstrap-wysihtml5.css" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -64,34 +147,33 @@
   </head>
 
   <body>
-
-    <div class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#"><img src="img/logo.png"
-style="max-height:40px;" /></a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li <%= printActiveIfMatches "/" %>><a href="/"><p>GO</p>Home</a></li>
-              <li <%= printActiveIfMatches "/candidates" %>><a href="/candidates"><p>GO</p>Candidates</a></li>
-              <li <%= printActiveIfMatches "/platform" %>><a href="/platform"><p>GO</p>Platform</a></li>
-              <li <%= printActiveIfMatches "/vote" %>><a href="/vote"><p>GO</p>Vote</a></li>
-              <li <%= printActiveIfMatches "/suggestion" %>><a href="/suggestion"><p>GO</p>Suggestions</a></li>
-              <!-- <li><a href="#endorsements"><p>GO</p>Endorsements</a></li> -->
-            </ul>
-          </div><!--/.nav-collapse -->
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/"><img src="img/logo2.png"
+              /></a>
+            <div class="nav-collapse">
+              <ul class="nav">
+                <li <%= printActiveIfMatches "/" %>><a href="/"><p>GO</p>Home</a></li>
+                <li <%= printActiveIfMatches "/candidates" %>><a href="/candidates"><p>GO</p>Candidates</a></li>
+                <li <%= printActiveIfMatches "/platform" %>><a href="/platform"><p>GO</p>Platform</a></li>
+                <!-- <li <%= printActiveIfMatches "/vote" %>><a href="/vote"><p>GO</p>Vote</a></li>
+                <li <%= printActiveIfMatches "/suggestion" %>><a href="/suggestion"><p>GO</p>Suggestions</a></li> -->
+                <!-- <li><a href="#endorsements"><p>GO</p>Endorsements</a></li> -->
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
       <%= yield %>
-    </div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
@@ -99,13 +181,13 @@ style="max-height:40px;" /></a>
     
     <script>
       $(function(){
-        var $carousel = $("#myCarousel").carousel({ interval: 4000 });
+        /*var $carousel = $("#myCarousel").carousel({ interval: 4000 });
         $carousel.on('slid',function(){ 
           if( $('#myCarousel .active').index('#myCarousel .item') == 2 ){
             $carousel.carousel('pause');
             $('#myModal').modal(); 
           } 
-        });
+        });*/
         $('.return').click(
           function(){
             $('.tab-content .active').children().slideDown('slow');
@@ -129,9 +211,6 @@ style="max-height:40px;" /></a>
          $('a[data-toggle="tab"]').click(function(){
           $('.chosen').parent().siblings().fadeToggle();
           $(".chosen").removeClass('chosen');
-         });
-         $('.thumbnail').click(function(){
-
          });
          $('#editor').wysihtml5({ "color" : true });
       });

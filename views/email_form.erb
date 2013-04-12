@@ -1,0 +1,70 @@
+<div class="container non-home">
+  <div class="row">
+    <form class="span6" action="/email" method="POST">
+      <label for="sender">Sender Name</label>
+      <input type="text" id="sender" name="sender" class="span6">
+      <label for="sender_email">Sender Email ( e.g. _____@gopartyumd.com )</label>
+      <input type="email" id="sender_email" name="sender_email" class="span6">
+      <label for="subject">Email Subject</label>
+      <input type="text" name="subject" id="subject" required class="span6"/>
+      <label for="body">Email Body</label>
+      <textarea id="body" name="body" class="span6" rows=15></textarea>
+      <br/>
+      <input class="btn btn-primary pull-right" type="submit" id="submit_button" value="Save">
+        <div id="recipients" hidden>
+        </div>
+    </form>
+
+    <div class="span6">
+      <h1>Recipients</h1>
+      <label class="radio"><input type="radio" name="recipient_type" value="#google">Use Google Login</label>
+      <label class="radio"><input type="radio" name="recipient_type" value="#csv" checked>Enter Manually</label>
+      <div class="recipient_content" id="csv">
+        <label for="recipient_csv">Enter Recipients separated either by a comma, space, or new line</label>
+        <textarea rows=12 class="span6"></textarea>
+        <ul>
+        </ul>
+      </div>
+      <div id="google" class="recipient_content" hidden>
+        Google
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(function(){
+    $("#body").wysihtml5();
+      
+    $("form").submit(function(e){
+      e.preventDefault();
+      var currently_checked = $("input[type='radio']:checked").val();
+      if(currently_checked == "#csv"){
+        var recipients = $(currently_checked + " textarea").val();
+        recipients = recipients.split(/\s+|,/);
+        $("#csv ul, #recipients").empty();
+        recipients.forEach(function(el){
+          if(el != "" ){
+            $("<input>").attr({
+                type: 'text',
+                name: 'recipients[name]',
+                value: el,
+            }).appendTo("#recipients");
+            $("<li>" + el + "</li>").appendTo("#csv ul")
+          }
+        });
+      }else{
+        alert("NOPE");
+      }
+      return false;
+    });
+    $("input[type='radio']").change(function(){
+      $(".recipient_content").hide();
+      $($(this).val()).show();
+      $("#recipients").empty();
+    });
+
+  });
+  
+</script>

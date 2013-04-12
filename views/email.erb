@@ -1,0 +1,46 @@
+<div class="container non-home">
+  <div class="span10">
+    <h1>Email waiting to be sent </h1>
+    <% if @unsent_emails.length > 0  %>
+      <table class="table">
+        <tr>
+          <th>Subject</th>
+          <th>Action</th>
+        </tr>
+        <% @unsent_emails.each do |email| %>
+          <tr>
+            <td><%=email.title%></td>
+            <td>
+              <form method="POST" action="/email/<%=email.id%>">
+                <input hidden name="send" value="true">
+                <button type="submit" class="btn btn-primary">Send</button>
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <h3>No email waiting to be sent  </h3>
+    <% end %>
+  <hr />
+  </div>
+  <div class="span10">
+    <h1>Sent Email <small>(note: Mandrill may take a while to send emails)</small></h1>
+    <% if @sent_emails.length > 0 %>
+      <table class="table">
+        <tr>
+          <th>Subject</th>
+          <th>Sent Time</th>
+        </tr>
+        <% @sent_emails.each do |email| %>
+          <tr>
+            <td><%=email.title%></td>
+            <td><%=email.sent_time%></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <h3>You haven't sent any email </h3>
+    <% end %>
+  </div>
+</div>

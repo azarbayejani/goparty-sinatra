@@ -1,0 +1,37 @@
+<form class="span6" method="POST">
+
+  <input type="hidden" value="<%= @person[:id] %>" name="person_id">
+  <label for="phone">Phone #</label>
+  <input type="tel" class="span4" id="phone" name="phone">
+  <label for="residence">Residence Hall</label>
+  <select id="residence" name="residence_hall" class="span4">
+    <option value="Cambridge Community: Bel Air, Cambridge, Centreville, Cumberland, or Chestertown">Cambridge Community: Bel Air, Cambridge, Centreville, Cumberland, or Chestertown</option>
+    <option value="Commons Community">Commons Community</option>
+    <option value="Courtyards Community">Courtyards Community</option>
+    <option value="Denton Community: Denton, Easton, Elkton, or Oakland">Denton Community: Denton, Easton, Elkton, or Oakland</option>
+    <option value="Ellicott Community: Ellicott, Hagerstown, or LaPlata">Ellicott Community: Ellicott, Hagerstown, or LaPlata</option>
+    <option value="Greek Community: Greek Row or the Graham Cracker">Greek Community: Greek Row or the Graham Cracker</option>
+    <option value="Leonardtown Community: New or Old Leonardtown">Leonardtown Community: New or Old Leonardtown</option>
+    <option value="North Hill Community: Anne Arundel, Caroline, Carroll, Dorchester, Queen Anne’s, St. Mary’s, Somerset, Wicomico, or Worcester">North Hill Community: Anne Arundel, Caroline, Carroll, Dorchester, Queen Anne’s, St. Mary’s, Somerset, Wicomico, or Worcester</option>
+    <option value="South Hill Community: Allegany, Annapolis, Baltimore, Calvert, Cecil, Charles or Frederick">South Hill Community: Allegany, Annapolis, Baltimore, Calvert, Cecil, Charles or Frederick</option>
+    <option value="South Hill Community: Garrett, Hartford, Howard, Kent, Montgomery, Prince George’s, Talbot, or Washington Halls">South Hill Community: Garrett, Hartford, Howard, Kent, Montgomery, Prince George’s, Talbot, or Washington Halls</option>
+    <option value="Off Campus Community: Zip code 20740, not in commons or courtyards">Off Campus Community: Zip code 20740, not in commons or courtyards</option>
+    <option value="Off Campus Community: Zip code not 20740">Off Campus Community: Zip code not 20740</option>
+  </select>
+  <label for="college">College</label>
+  <select class="span4" id="college" name="college">
+    <option value="Agriculture">Agriculture</option>
+    <option value="Architecture">Architecture</option>
+    <option value="Arts & Humanities">Arts & Humanities</option>
+    <option value="BSOS">BSOS</option>
+    <option value="Business & Management">Business & Management</option>
+    <option value="CMNS">CMNS</option>
+    <option value="Education">Education</option>
+    <option value="Engineering">Engineering</option>
+    <option value="Public Health">Public Health</option>
+    <option value="Journalism">Journalism</option>
+    <option value="Letters & Sciences/ Undergraduate Studies">Letters & Sciences/ Undergraduate Studies</option>
+  </select><p/>
+  <button type="submit" class="btn btn-success">Submit</button>
+
+</form>

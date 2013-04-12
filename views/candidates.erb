@@ -1,3 +1,4 @@
+<div class="container non-home">
 <div class="tabbable">
   <ul class="nav nav-tabs" id="sub-tabs">
     <li class="active">
@@ -19,19 +20,21 @@
 <div class="tab-content">
   <div id="exec" class="hero-unit tab-pane active">
     <ul class="thumbnails">
-<% @exec.each do |candidate| %>
-      <li class="span3">
-        <a href="#" class="thumbnail">
-          <img src="" alt="" />
-          <h3><%= candidate.name %></h3>
-          <h4> <%= candidate.title %> </h4>
-          <p hidden>
-            <%= candidate.description %>
-          </p>
-          <b hidden data-link="<%= candidate.video %>"></b>
-        </a>
-      </li>
-<% end %>
+      <% if @exec %>
+        <% @exec.each do |candidate| %>
+          <li class="span3">
+            <a href="#" class="thumbnail">
+              <img src="<%= candidate.img %>" alt="" />
+              <h3><%= candidate.name %></h3>
+              <h4> <%= candidate.title %> </h4>
+              <p hidden>
+                <%= candidate.description %>
+              </p>
+              <b hidden data-link="<%= candidate.video %>"></b>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
       <li class="span6" style="display:none">
         <h1>Name of Person</h1>
         <iframe class="video" width="400" height"233" allowfullscreen frameborder="1" src=""></iframe>
@@ -41,18 +44,20 @@
   </div>
   <div id="res" class="hero-unit tab-pane">
     <ul class="thumbnails">
-      <% @residential.each do |candidate| %>
-      <li class="span3">
-        <div class="thumbnail">
-          <a href="#" class="thumbnail">
-            <img src="" alt="" />
-            <h3><%= candidate.name %></h3>
-            <h4><%= candidate.title %></h4>
-            <p hidden><%= candidate.description %></p>
-            <b hidden data-link="<%= candidate.video %>"></b>
-          </a>
-        </div>
-      </li>
+      <% if @residential %>
+        <% @residential.each do |candidate| %>
+          <li class="span3">
+            <div class="thumbnail">
+              <a href="#" class="thumbnail">
+                <img src="<%= candidate.img %>" alt="" />
+                <h3><%= candidate.name %></h3>
+                <h4><%= candidate.title %></h4>
+                <p hidden><%= candidate.description %></p>
+                <b hidden data-link="<%= candidate.video %>"></b>
+              </a>
+            </div>
+          </li>
+        <% end %>
       <% end %>
       <li class="span6" style="display:none">
         <h1>Name of Person</h1>
@@ -63,18 +68,20 @@
   </div>
   <div id="acad" class="hero-unit tab-pane">
     <ul class="thumbnails">
-      <% @academic.each do |candidate| %>
-      <li class="span3">
-        <div class="thumbnail">
-          <a href="#" class="thumbnail">
-            <img src="" alt="" />
-            <h3><%= candidate.name %></h3>
-            <h4> <%= candidate.title %></h4>
-            <p hidden><%= candidate.description %></p>
-            <b hidden data-link="<%= candidate.video %>"></b>
-          </a>
-        </div>
-      </li>
+      <% if @academic %>
+        <% @academic.each do |candidate| %>
+          <li class="span3">
+            <div class="thumbnail">
+              <a href="#" class="thumbnail">
+                <img src="<%= candidate.img %>" alt="" />
+                <h3><%= candidate.name %></h3>
+                <h4> <%= candidate.title %></h4>
+                <p hidden><%= candidate.description %></p>
+                <b hidden data-link="<%= candidate.video %>"></b>
+              </a>
+            </div>
+          </li>
+        <% end %>
       <% end %>
       <li class="span6" style="display:none">
         <h1>Name of Person</h1>
@@ -82,4 +89,5 @@
         <p>TESTESTST</p>
       </li>
     </ul>
+  </div>
 </div>
