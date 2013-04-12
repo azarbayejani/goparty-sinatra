@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'data_mapper'
 require 'mandrill'
-require 'google_drive'
+#require 'google_drive'
 #require "dm-migrations"
 #require 'digest/sha1'
 #require 'rack-flash3'
@@ -105,7 +105,7 @@ helpers do
   end
 end
 
-get '/' do
+get '/test' do
   erb :home do 
     erb :init
   end
