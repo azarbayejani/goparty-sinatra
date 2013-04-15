@@ -12,6 +12,24 @@ DataMapper::setup(:default,"sqlite3://#{Dir.pwd}/goparty.db")
 ENV['MANDRILL_APIKEY'] = "-2_pDSbUJL75U2hc5_0ilg"
 mandrill = Mandrill::API.new
 
+set :username,'goparty2013'
+set :password, 'Pl$D0ntH4x!'
+set :token, 'u<Pb6;3XEk@XRF(JMtK'
+set :FACEBOOK_URL, ""
+
+#AUTHENTICATION!!!
+helpers do
+
+  def admin?
+    request.cookies[settings.username] == settings.token
+  end
+
+  def protected!
+    halt [ 401, 'Not Authorized' ] unless admin?
+  end
+
+end
+
 class String
   def to_bool 
     self == "true"
@@ -93,6 +111,25 @@ get '/' do
   end
 end
 
+get '/login' do
+  erb :login
+end
+
+post '/login' do
+  if params['username']==settings.username&&params['password']==settings.password
+    response.set_cookie(settings.username,settings.token) 
+    redirect '/'
+  else
+    "Username or Password incorrect"
+  end
+end
+
+get '/logout' do
+  response.set_cookie(settings.username, false) 
+  redirect '/' 
+end
+
+
 get '/candidates' do
   @exec = Candidate.all(:type => "executive", :order => :id.desc)
   @residential = Candidate.all( :type => "residential", :order => :title)
@@ -157,6 +194,18 @@ post '/platform' do
   end
   p.save
   redirect '/platform' 
+end
+
+get '/candidates/admin' do
+  protected!
+  
+  @candidates = Candidate.all
+  erb :candidates_admin
+
+end
+
+delete '/candidates/:id' do
+  Candidate.get(params[:id].to_i).destroy
 end
 
 get '/platform/admin' do
