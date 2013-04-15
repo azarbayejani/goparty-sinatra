@@ -6,6 +6,9 @@
         <a href="#<%= page.slug %>" data-toggle="tab"><p><%= page.title %></p></a>
       </li>
     <% end %>
+      <li class="active">
+	<a href="#GO" data-toggle="tab"><p>Full Platform: Project GO</p></a>
+      </li>
   </ul>
 
   <div class="tab-content">
@@ -24,6 +27,7 @@
         <div id="<%= page.slug %>" class="hero-unit tab-pane">
           <h1><%= page.title %></h1>
           <hr class="long" />
+          <%= page.text %>
           <% page.sections.each do |section| %>
             <div class="well">
               <div class="row">
@@ -39,6 +43,21 @@
         </div>
       <% end %>
     <% end %>
+
+        <div id="GO" class="hero-unit tab-pane active">
+          <p style="padding-top:40px">Below, you’ll find Go Party’s Platform: Project Go. We’ve listed a series of problems, accompanied by solutions and a strategic plan for how we’ll be successful. For a shorter list of our proposed initiatives, categorized by subject, feel free to click on any of the tabs above.</p>
+          <p style="padding-bottom:40px">Think of this as our blueprint for action, because from day one, we’ll be ready to go.
+
+</p>
+          <div class="well" style="padding-left:55px;">
+            <a href="go.pdf" style="color:green">
+              <img class="pull-right"
+              src="http://www2.macleans.ca/wp-content/uploads/2011/10/pdf-icon.png"
+               style="max-height:60px"/>
+              <h1 class="">Open Project Go Here</h1>
+            </a>
+          </div>
+        </div>
   </div>
 </div>
 </div>
