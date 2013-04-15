@@ -1,0 +1,49 @@
+<div class="container non-home">
+  <h1>Candidates Admin Panel</h1>
+  <table class="table">
+    <tr>
+      <th>Candidate Name</th>
+      <th>Candidate Type</th>
+      <th>Candidate Title</th>
+      <th>Delete</th>
+    </tr>
+    <% @candidates.each do |cand| %>
+      <tr id="<%= cand.id %>">
+        <td><%= cand.name %></td>
+        <td><%= cand.type %></td>
+        <td><%= cand.title %></td>
+        <td><button data-delete="<%= cand.id %>"
+              class="delete-btn btn btn-danger">DELETE</button></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<script>
+  $(".delete-btn").click(function(){
+    id_to_delete = $(this).attr('data-delete');
+    el_to_remove = $("#" + id_to_delete);
+    el_to_remove.slideUp();
+    $.ajax(
+      {
+        url: "/candidates/" + id_to_delete,
+        type: 'DELETE',
+        success: function(){
+          // good
+        },
+        error: function(){
+          el_to_remove.children().last().slideDown().append(
+            '<span class="label label-warning">' +
+            'Not deleted!</span>'
+          );
+        }
+
+      }
+
+    );
+
+
+  });
+
+</script>
