@@ -16,7 +16,7 @@
     <label for="page_title"><h3>Page Title</h3></label>
     <input type="text" id="page_title" name="page[title]" placeholder="(e.g. Academic Reform)" class="span7">
     <label for="page_text"><h3>Top-level page text</h3></label>
-    <textarea id="editor" name="page[text]" contenteditable="true" placeholder="Enter text ..." class="span7" rows="6" id="page_text">
+    <textarea id="editor" name="page[text]" contenteditable="true" placeholder="Enter text ..." class="span7" rows="12" id="page_text">
     </textarea>
     <div>
       <input type="submit">
@@ -55,12 +55,12 @@
           "<label for='" + title_id + "'><strong>" + label_slug + " Title</strong></label>" +
           "<input type='text' name='" + title_name + "' id='" + title_id + "' class='span7'>" +
           "<label for='" + text_id + "'><strong>" + label_slug + " Text</strong></label>" +  
-          "<textarea id='" + text_id + "' name='" + text_name + "' class='span7' rows='5'></textarea>" +
+          "<textarea id='" + text_id + "' name='" + text_name + "' class='span7' rows='15'></textarea>" +
         "</div>"
       );
       $('html, body').animate({scrollTop: $("#"+div_id).offset().top});
       curr_child++;
-      $("#"+text_id).wysihtml5();
+      $("#"+text_id).wysihtml5({ color : true });
     });
     $("#remove_button").click(function(){
       var sub = $("#huge_form .sub-section").filter(":last");
