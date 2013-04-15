@@ -313,11 +313,25 @@ post '/completesurvey' do
 
   p.save
 
-  redirect '/thanks'
+  redirect '/voting'
 
 end
 
+get '/voting' do
+  erb :home do 
+    erb :voting
+  end
+end
+
+# Currently won't store anything, but may at some point, so post
+post '/voting' do
+
+
+  redirect '/thanks'
+end
+
 get '/thanks' do
+
   erb :home do
     erb :thanks
   end

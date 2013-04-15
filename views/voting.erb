@@ -1,0 +1,26 @@
+<h4>Voting is easy. You can do it on Testudo between Monday, April 22 and Wednesday, April 24. Make a plan to help you remember.</h4>
+<h4>Voting times are Monday & Tuesday 8:00 AM to 8:00 PM, and Wednesday from 8:00 AM to 5:00 PM.</h4>
+<h4 hidden>
+
+</h4>
+<hr/>
+<script src="/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="/css/datepicker.css" type="text/css">
+
+<div class="form-horizontal">
+    <form action="/thanks">
+    <label for="dp2"><h4>I want to vote on:</h4></label>
+  <input type="text" value="04/22/13" data-date-format="mm/dd/yy" id="dp2" name="date">
+  <select name="time">
+    <option value="9:00">Morning</option>
+    <option value="12:00">Noon</option>
+    <option value="15:00">Afternoon</option>
+  </select>
+  <button type="submit" class="btn btn-success">Go!</button>
+</form>
+</div>
+
+    <script>$("#dp2").datepicker({
+        startDate: "04/22/13",
+        endDate: "04/24/13"
+      });</script>
