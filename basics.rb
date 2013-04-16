@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'data_mapper'
 require 'mandrill'
+require 'json'
 #require 'google_drive'
 #require "dm-migrations"
 #require 'digest/sha1'
@@ -92,7 +93,8 @@ class Email
   property :text, Text
   property :sent, Boolean, :default => false
   property :sent_time, DateTime
-
+  property :recipients, Text
+  
 end
 
 DataMapper.auto_upgrade!
@@ -235,6 +237,13 @@ post '/email' do
   e[:title] = params[:subject]
   e[:text] = params[:body]
   e[:sent] = false
+  puts params[:recipients]
+  e[:recipients] = params[:recipients].map{ |name|
+    {
+      :email => name
+    }
+  }.to_json
+  puts e[:recipients]
   e.save
 
   redirect '/email'
@@ -248,16 +257,18 @@ post '/email/:id' do
   e.save
 
   #GOOGLE API STUFF
-  recipients = [ 
-    {
-      :email => "bobby.azarbayejani@gmail.com",
-      :name => "Bobby Azarbayejani" 
-    },
-    { 
-      :email => "aashish.gadani@gmail.com",
-      :name => "Aashish Gadani"
-    }
-  ] 
+  #recipients = [ 
+  #  {
+  #    :email => "bobby.azarbayejani@gmail.com",
+  #    :name => "Bobby Azarbayejani" 
+  #  },
+  #  { 
+  #    :email => "aashish.gadani@gmail.com",
+  #    :name => "Aashish Gadani"
+  #  }
+  #]
+  recipients = JSON.parse(e[:recipients])
+
 
   ## MANDRILL API SEND
   mandrill.messages().send({

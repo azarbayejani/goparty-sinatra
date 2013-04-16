@@ -49,7 +49,7 @@
           if(el != "" ){
             $("<input>").attr({
                 type: 'text',
-                name: 'recipients[name]',
+                name: 'recipients[]',
                 value: el,
             }).appendTo("#recipients");
             $("<li>" + el + "</li>").appendTo("#csv ul")
