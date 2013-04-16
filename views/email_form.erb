@@ -10,10 +10,11 @@
       <label for="body">Email Body</label>
       <textarea id="body" name="body" class="span6" rows=15></textarea>
       <br/>
-      <input class="btn btn-primary pull-right" type="submit" id="submit_button" value="Save">
+      <input class="btn btn-danger pull-right" type="submit" value="Submit">
+      <input class="btn btn-primary pull-right" id="submit_button" value="Update recipient list">
         <div id="recipients" hidden>
         </div>
-    </form>
+     </form>
 
     <div class="span6">
       <h1>Recipients</h1>
@@ -37,7 +38,7 @@
   $(function(){
     $("#body").wysihtml5();
       
-    $("form").submit(function(e){
+    $("#submit_button").click(function(e){
       e.preventDefault();
       var currently_checked = $("input[type='radio']:checked").val();
       if(currently_checked == "#csv"){
