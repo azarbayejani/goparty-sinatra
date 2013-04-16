@@ -3,6 +3,7 @@ require 'data_mapper'
 require 'mandrill'
 require 'json'
 require 'pony'
+require 'ri_cal'
 #require 'google_drive'
 #require "dm-migrations"
 #require 'digest/sha1'
@@ -347,6 +348,27 @@ get '/thanks' do
   erb :home do
     erb :thanks
   end
+end
+
+get '/cal' do
+  start_times = [" 8:00"," 12:00"," 15:00"]
+  end_times = [" 9:00"," 13:00", " 16:00"]
+  start = params[:date] + start_times[params[:time].to_i-1]
+  endtime = params[:date] + end_times[params[:time].to_i-1] 
+  
+  a = RiCal.Calendar do
+        event do
+          summary "Vote for Go Party!"
+          description "Vote for Go Party!"
+          dtstart Date.strptime start, '%m/%d/%Y %H:%M' 
+          dtend Date.strptime endtime, '%m/%d/%Y %H:%M'
+          location "Your Desk"
+        end
+  end
+
+  attachment "cal.ics"
+  a.to_rfc2445_string
+
 end
 
 get '/sugg' do
