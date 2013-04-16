@@ -24,7 +24,7 @@
         <% @exec.each do |candidate| %>
           <li class="span3">
             <a href="#" class="thumbnail">
-              <img src="<%= candidate.img %>" alt="" />
+              <img src="<%= candidate.img %>" alt=""/>
               <h3><%= candidate.name %></h3>
               <h4> <%= candidate.title %> </h4>
               <p hidden>
@@ -47,7 +47,6 @@
       <% if @residential %>
         <% @residential.each do |candidate| %>
           <li class="span3">
-            <div class="thumbnail">
               <a href="#" class="thumbnail">
                 <img src="<%= candidate.img %>" alt="" />
                 <h3><%= candidate.name %></h3>
@@ -55,13 +54,12 @@
                 <p hidden><%= candidate.description %></p>
                 <b hidden data-link="<%= candidate.video %>"></b>
               </a>
-            </div>
           </li>
         <% end %>
       <% end %>
       <li class="span6" style="display:none">
         <h1>Name of Person</h1>
-        <iframe class="video" width="400" height"233" allowfullscreen frameborder="1" src=""></iframe>
+        <iframe class="video" width="400" height="233" allowfullscreen frameborder="1" src=""></iframe>
         <p>TESTESTST</p>
       </li>
     </ul>
@@ -71,7 +69,6 @@
       <% if @academic %>
         <% @academic.each do |candidate| %>
           <li class="span3">
-            <div class="thumbnail">
               <a href="#" class="thumbnail">
                 <img src="<%= candidate.img %>" alt="" />
                 <h3><%= candidate.name %></h3>
@@ -79,13 +76,12 @@
                 <p hidden><%= candidate.description %></p>
                 <b hidden data-link="<%= candidate.video %>"></b>
               </a>
-            </div>
           </li>
         <% end %>
       <% end %>
       <li class="span6" style="display:none">
         <h1>Name of Person</h1>
-        <iframe class="video" width="400" height"233" allowfullscreen frameborder="1" src=""></iframe>
+        <iframe class="video" width="400" height="233" allowfullscreen frameborder="1" src=""></iframe>
         <p>TESTESTST</p>
       </li>
     </ul>
