@@ -31,11 +31,11 @@
           <% page.sections.each do |section| %>
             <div class="well">
               <div class="row">
-                <a data-toggle="collapse" href="#<%= section.slug %>" class="nodec">
+                <a data-toggle="collapse" href="#<%= page.slug %>-<%= section.slug %>" class="nodec">
                   <h2 class="pull-right"><%= section.title %></h2>
                 </a>
               </div>
-              <div class="collapse" id="<%=section.slug%>">
+              <div class="collapse" id="<%= page.slug %>-<%=section.slug%>">
                 <%= section.text %>
               </div>
             </div>
