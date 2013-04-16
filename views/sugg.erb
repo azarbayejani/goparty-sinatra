@@ -1,0 +1,19 @@
+<div class="container non-home">
+  <div class="hero-unit">
+    <div class="featurette" style="padding-top:0">
+      <img class="pull-right img-rounded featurette-image" src="/img/front1a.JPG" width="500px" style="padding-top:125px"/>
+      <h1 class="featurette-heading">Make your voice heard</h1>
+      <hr/>
+      <form action="/sugg" method="POST" > 
+        <label for="from_field" class="lead">Your Email (required)</label>
+        <input type="email" name="from" id="from_field" placeholder="johndoe@terpmail.umd.edu" class="span4" required/>
+        <label for="subject_field" class="lead">Subject (optional)</label>
+        <input type="text" name="subject" id="subject_field" placeholder="The Best Idea Ever" class="span4"/>
+        <label for="text_field" class="lead">Your Suggestion</label>
+        <textarea name="body" required id="text_field" class="span4" rows=5></textarea><p/>
+        <button type="submit"  class="btn btn-success">Send!</button>
+
+      </form>
+    </div>
+  </div>
+</div>

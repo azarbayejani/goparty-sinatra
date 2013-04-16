@@ -2,6 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'mandrill'
 require 'json'
+require 'pony'
 #require 'google_drive'
 #require "dm-migrations"
 #require 'digest/sha1'
@@ -346,5 +347,18 @@ get '/thanks' do
   erb :home do
     erb :thanks
   end
+end
+
+get '/sugg' do
+  erb :sugg
+end
+
+post '/sugg' do
+  Pony.mail :from => params[:from] || "gopartyumd@gmail.com",
+            :to => "bobby.azarbayejani@gmail.com",
+            :subject => params[:subject] || "Suggestion",
+            :body => Rack::Utils.escape_html(params[:body])
+
+  redirect '/sugg'
 end
 
