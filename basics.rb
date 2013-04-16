@@ -359,6 +359,6 @@ post '/sugg' do
             :subject => params[:subject] || "Suggestion",
             :body => Rack::Utils.escape_html(params[:body])
 
-  redirect '/sugg'
+  redirect '/'
 end
 
