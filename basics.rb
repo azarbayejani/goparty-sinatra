@@ -157,11 +157,11 @@ post '/candidates' do
 
     c[:img] = "/uploads/" + name
 
-    c.save
-    redirect '/candidates'
   else
-    redirect '/candidates/create'
+    c[:img] = "http://placehold.it/210x315&text=no+picture"
   end
+  c.save
+  redirect '/candidates'
 end
 
 get '/candidates/create' do
