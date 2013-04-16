@@ -2,10 +2,28 @@
 <h2>Thank you for committing to vote!</h2>
 
 <div class="well">
-  <h4><a href="<%= params.to_s %>">Put it on my calendar</a></h4>
-<h4><a href="<%= settings.FACEBOOK_URL %>">Share on Facebook</a></h4>
+  <h4><a id="cal">Put it on my calendar</a></h4>
+<h4><a href="https://www.facebook.com/GoPartyUMD">Share on Facebook</a></h4>
 <h4><a href="http://twitter.com/share?url=http://gopartyumd.com&text=I+pledged+to+vote+for+Go+Party&hashtags=umd,goparty2013">Tweet about us</a></h4>
 </div>
 </div>
 
+<script>
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+  }
 
+  $(function(){
+    $("#cal").click(function(){
+      window.location = '/cal' + window.location.search;
+    });
+  });
+</script>
