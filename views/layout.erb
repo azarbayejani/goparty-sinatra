@@ -84,12 +84,11 @@
         }
 
         .carousel-caption {
-          max-width:39%;
           border-top-right-radius: 12px 12px;
           border-bottom-right-radius: 12px 12px;
           color:white;
           padding:3%;
-          margin-left:2%;
+          margin-left:-1%;
           background:transparent;
         }
 
@@ -98,6 +97,14 @@
             margin-bottom:-5%;
           }
         }
+
+        @media(max-width:480px){
+          .carousel-caption{
+            margin-top:-35%;
+            color:#333;
+          }
+        }
+
 /*
         .carousel-caption form{
           position:absolute;
@@ -109,9 +116,12 @@
           z-index:10020;
         }
 
+        .carousel-caption{
+          bottom:5%;
+        }
+
         .carousel-caption form .row{
           margin-left:0%;
-          margin-bottom:-2%;
           z-index:0;
         }
 
