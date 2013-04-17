@@ -6,6 +6,7 @@
       <th>Candidate Type</th>
       <th>Candidate Title</th>
       <th>Delete</th>
+      <th>EDIT</th>
     </tr>
     <% @candidates.each do |cand| %>
       <tr id="<%= cand.id %>">
@@ -14,6 +15,7 @@
         <td><%= cand.title %></td>
         <td><button data-delete="<%= cand.id %>"
               class="delete-btn btn btn-danger">DELETE</button></td>
+        <td><a class="btn btn-warning" href="/candidates/<%=cand.id%>/edit">EDIT</a></td>
       </tr>
     <% end %>
   </table>

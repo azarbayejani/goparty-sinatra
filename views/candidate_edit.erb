@@ -1,0 +1,16 @@
+<div class="non-home hero-unit">
+<h1>Candidate Edit</h1>
+<hr/>
+
+<form method="POST" action="/candidates/<%= @c[:id] %>">
+  <label for="cand_name">Candidate Name</label>
+  <input type="text" name="name" value="<%= @c[:name] %>" id="cand_name">
+  <label for="cand_title">Candidate Title</label>
+  <input type="text" name="title" id="cand_title" value="<%= @c[:title] %>">
+  <label for="description">Description</label>
+  <textarea id="description" name="description"><%= @c[:description] %></textarea>
+  <label for="video">Youtube URL</label>
+  <input type="text" value="<%= @c[:video] %>" name="video" id="video">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
