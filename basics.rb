@@ -109,7 +109,7 @@ helpers do
   end
 end
 
-get '/test' do
+get '/' do
   erb :home do 
     erb :init
   end
@@ -169,6 +169,7 @@ post '/candidates' do
 end
 
 get '/candidates/create' do
+  protected!
   erb :candidates_form
 end
 
@@ -178,6 +179,7 @@ get '/platform' do
 end
 
 get '/platform/create' do
+  protected!
   erb :platform_form
 end
 
@@ -209,10 +211,32 @@ get '/candidates/admin' do
 end
 
 delete '/candidates/:id' do
+  protected!
   Candidate.get(params[:id].to_i).destroy
 end
 
+post '/candidates/:id' do
+  protected!
+  c = Candidate.get(params[:id].to_i)
+  c[:name]        = params[:name]
+  c[:description] = params[:description]
+  c[:title]       = params[:title]
+  c[:video]       = params[:video]
+
+  c.save
+  redirect '/candidates/admin'
+end
+
+get '/candidates/:id/edit' do
+  protected!
+  @c = Candidate.get(params[:id].to_i)
+  
+  erb :candidate_edit
+end
+
+
 get '/platform/admin' do
+  protected!
   
   @platforms = Platform.all
   erb :platform_admin
@@ -220,14 +244,17 @@ get '/platform/admin' do
 end
 
 delete '/platform/:id' do
+  protected!
   Platform.get(params[:id].to_i).destroy
 end
 
 get '/email/create' do
+  protected!
   erb :email_form
 end
 
 get '/email' do
+  protected!
   @sent_emails = Email.all( :sent => true )
   @unsent_emails = Email.all( :sent => false, :order=> :sent_time.asc)
   erb :email
@@ -253,6 +280,7 @@ post '/email' do
 end
 
 post '/email/:id' do
+  protected!
   e = Email.get( params[:id].to_i )
   e[:sent] = params[:send].to_bool
   e[:sent_time] = Time.now
@@ -377,7 +405,7 @@ end
 
 post '/sugg' do
   Pony.mail :from => params[:from] || "gopartyumd@gmail.com",
-            :to => "bobby.azarbayejani@gmail.com",
+            :to => "gopartyumd@gmail.com",
             :subject => params[:subject] || "Suggestion",
             :body => Rack::Utils.escape_html(params[:body])
 
