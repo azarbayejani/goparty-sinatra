@@ -92,18 +92,7 @@
           background:transparent;
         }
 
-        @media (min-width: 980px) and (max-width: 1280px) { 
-          .carousel-caption {
-            margin-bottom:-5%;
-          }
-        }
 
-        @media(max-width:480px){
-          .carousel-caption{
-            margin-top:-35%;
-            color:#333;
-          }
-        }
 
 /*
         .carousel-caption form{
@@ -136,7 +125,33 @@
         .container-text{
           max-width:44%;
           max-height:10%;
-          margin-top:38%;
+        }
+        
+        @media(max-width:1200px){
+          .carousel{
+            top:15%;
+          }
+          .carousel-caption h3{
+            line-height:1.4em;
+          }
+          .carousel-caption h2{
+            line-height:1em;
+          }
+          .carousel-caption{
+            padding-top:3%;
+          }
+        }
+        
+        @media (min-width: 980px) and (max-width: 1280px) { 
+          .carousel-caption {
+            margin-bottom:-5%;
+          }
+        }
+
+        @media(max-width:480px){
+          .carousel-caption{
+            color:#333;
+          }
         }
 
 	/* Featurettes
