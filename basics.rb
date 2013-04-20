@@ -115,6 +115,12 @@ get '/' do
   end
 end
 
+get '/week2' do
+  erb :home do
+    erb :init_week2
+  end
+end
+
 get '/login' do
   erb :login
 end
