@@ -273,12 +273,12 @@ post '/email' do
   e[:text] = params[:body]
   e[:sent] = false
   puts params[:recipients]
-  e[:recipients] = params[:recipients].map{ |name|
+  e[:recipients] = params[:recipients].split(/[\s,]+/).map{ |name|
     {
       :email => name
     }
   }.to_json
-  puts e[:recipients]
+  
   e.save
 
   redirect '/email'
