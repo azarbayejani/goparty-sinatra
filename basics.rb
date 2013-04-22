@@ -109,13 +109,13 @@ helpers do
   end
 end
 
-get '/' do
-  erb :home do 
-    erb :init
-  end
-end
+#get '/' do
+#  erb :home do 
+#    erb :init
+#  end
+#end
 
-get '/week2' do
+get '/' do
   erb :home do
     erb :init_week2
   end
