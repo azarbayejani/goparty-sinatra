@@ -277,11 +277,7 @@ post '/email' do
   e[:text] = params[:body]
   e[:sent] = false
   puts params[:recipients]
-  e[:recipients] = params[:recipients].split(/[\s,]+/).map{ |name|
-    {
-      :email => name
-    }
-  }.to_json
+  e[:recipients] = params[:recipients]
   
   e.save
 
@@ -307,7 +303,11 @@ post '/email/:id' do
   #    :name => "Aashish Gadani"
   #  }
   #]
-  recipients = JSON.parse(e[:recipients])
+  recipients = e[:recipients].split(/[\s,]+/).map { |email|
+                 {
+			:email => email
+                 }
+  }
 
 
   ## MANDRILL API SEND
