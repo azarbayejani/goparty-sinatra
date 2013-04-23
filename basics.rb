@@ -121,6 +121,10 @@ get '/' do
   end
 end
 
+get '/endorsements' do
+  erb :endorsements
+end
+
 get '/login' do
   erb :login
 end
