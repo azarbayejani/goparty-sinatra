@@ -115,10 +115,14 @@ end
 #  end
 #end
 
+#get '/' do
+#  erb :home do
+#    erb :init_week2
+#  end
+#end
+
 get '/' do
-  erb :home do
-    erb :init_week2
-  end
+  erb :coldbrew, :layout=>false
 end
 
 get '/endorsements' do
